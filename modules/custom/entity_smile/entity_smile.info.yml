@@ -1,0 +1,5 @@
+name: 'Entity Smile'
+type: module
+description: 'Custom module and entity by drupal console'
+core: 8.x
+package: 'Custom'

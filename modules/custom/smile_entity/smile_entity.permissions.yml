@@ -1,0 +1,31 @@
+add smile_entity entities:
+  title: 'Create new Smile_entity entities'
+
+administer smile_entity entities:
+  title: 'Administer Smile_entity entities'
+  description: 'Allow to access the administration form to configure Smile_entity entities.'
+  restrict access: true
+
+delete smile_entity entities:
+  title: 'Delete Smile_entity entities'
+
+edit smile_entity entities:
+  title: 'Edit Smile_entity entities'
+
+view published smile_entity entities:
+  title: 'View published Smile_entity entities'
+
+view unpublished smile_entity entities:
+  title: 'View unpublished Smile_entity entities'
+
+view all smile_entity revisions:
+  title: 'View all Smile_entity revisions'
+
+revert all smile_entity revisions:
+  title: 'Revert all Smile_entity revisions'
+  description: 'Role requires permission <em>view Smile_entity revisions</em> and <em>edit rights</em> for smile_entity entities in question or <em>administer smile_entity entities</em>.'
+
+delete all smile_entity revisions:
+  title: 'Delete all revisions'
+  description: 'Role requires permission to <em>view Smile_entity revisions</em> and <em>delete rights</em> for smile_entity entities in question or <em>administer smile_entity entities</em>.'
+

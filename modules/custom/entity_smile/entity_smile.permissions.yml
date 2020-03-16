@@ -1,0 +1,22 @@
+add entity smile entities:
+  title: 'Create new entity smile entities'
+
+administer entity smile entities:
+  title: 'Administer entity smile entities'
+  description: 'Allow to access the administration form to configure entity smile entities.'
+  restrict access: true
+
+delete entity smile entities:
+  title: 'Delete entity smile entities'
+
+edit entity smile entities:
+  title: 'Edit entity smile entities'
+
+view published entity smile entities:
+  title: 'View published entity smile entities'
+
+view unpublished entity smile entities:
+  title: 'View unpublished entity smile entities'
+
+permission_callbacks:
+  - \Drupal\entity_smile\EntitySmilePermissions::generatePermissions

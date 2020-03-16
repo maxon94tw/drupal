@@ -1,0 +1,36 @@
+<?php
+
+use Drupal\Core\Field\BaseFieldDefinition;
+use Drupal\block\Entity\Block;
+
+/**
+ * Implements hook_update_N().
+ */
+function smile_entity_update_8101() {
+  $definition_update_manager = \Drupal::entityDefinitionUpdateManager();
+  $field_storage_definition = BaseFieldDefinition::create('entity_reference')
+      ->setLabel(t('User Role'))
+         ->setDescription(t('The role of the entity user'))
+         ->setSetting('target_type', 'user_role')
+         ->setSetting('handler', 'default')
+         ->setDisplayOptions('view', [
+           'label' => 'above',
+           'type' => 'entity_reference_label',
+           'weight' => -3,
+         ])
+         ->setDisplayOptions('form', [
+           'type' => 'entity_reference_autocomplete',
+           'weight' => 3,
+           'settings' => [
+             'match_operator' => 'CONTAINS',
+             'size' => 60,
+             'autocomplete_type' => 'tags',
+             'placeholder' => '',
+           ],
+         ])
+         ->setDisplayConfigurable('form', TRUE)
+         ->setDisplayConfigurable('view', TRUE);
+
+  $definition_update_manager
+    ->installFieldStorageDefinition('user_role', 'smile_entity', 'smile_entity', $storage_definition);
+}

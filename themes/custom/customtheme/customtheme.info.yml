@@ -1,0 +1,24 @@
+name: Smile Custom Theme
+type: theme
+base theme: bartik
+description: 'My custom test theme'
+package: Core
+version: VERSION
+core: 8.x
+libraries:
+  - customtheme/global-styling
+libraries-override:
+  bartik/maintenance_page:
+    css:
+      theme:
+        css/maintenance-page.css: css/maintenance-page.css
+regions:
+  header: Header
+  menu: Menu
+  highlighted: Highlighted
+  breadcrumb: Breadcrumb
+  content: Content
+  sidebar_first: Sidebar first
+  sidebar_second: sidebar second
+  featured_bottom: Featured bottom
+  footer: Footer

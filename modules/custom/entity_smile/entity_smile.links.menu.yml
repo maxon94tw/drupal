@@ -1,0 +1,17 @@
+
+# entity smile menu items definition
+entity.entity_smile.collection:
+  title: 'entity smile list'
+  route_name: entity.entity_smile.collection
+  description: 'List entity smile entities'
+  parent: system.admin_structure
+  weight: 100
+
+
+# entity smile type menu items definition
+entity.entity_smile_type.collection:
+  title: 'entity smile type'
+  route_name: entity.entity_smile_type.collection
+  description: 'List entity smile type (bundles)'
+  parent: system.admin_structure
+  weight: 99

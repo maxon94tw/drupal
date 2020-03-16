@@ -1,0 +1,25 @@
+global-styling:
+  version: VERSION
+  css:
+    theme:
+      css/style.css: {}
+      css/jcf.css: {}
+  js:
+    js/script.js: {}
+    js/ie.js: {}
+    js/jcf.angular.js: {}
+    js/jcf.button.js: {}
+    js/jcf.checkbox.js: {}
+    js/jcf.common.js: {}
+    js/jcf.file.js: {}
+    js/jcf.js: {}
+    js/jcf.number.js: {}
+    js/jcf.radio.js: {}
+    js/jcf.range.js: {}
+    js/jcf.scrollable.js: {}
+    js/jcf.select.js: {}
+    js/jcf.textarea.js: {}
+    js/jquery.js: {}
+  dependencies:
+    - jcf-master
+    - core/jquery

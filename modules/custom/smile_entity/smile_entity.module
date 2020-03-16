@@ -1,0 +1,72 @@
+<?php
+
+/**
+ * @file
+ * Contains smile_entity.module.
+ */
+
+use Drupal\Core\Routing\RouteMatchInterface;
+
+/**
+ * Implements hook_help().
+ */
+function smile_entity_help($route_name, RouteMatchInterface $route_match) {
+  switch ($route_name) {
+    // Main module help for the smile_entity module.
+    case 'help.page.smile_entity':
+      $output = '';
+      $output .= '<h3>' . t('About') . '</h3>';
+      $output .= '<p>' . t('Cuustom module with the requirements') . '</p>';
+      return $output;
+
+    default:
+  }
+}
+
+function smile_entity_theme($existing, $type, $theme, $path) {
+  return [
+    'smile_entity' => [
+      'variables' => ['test_var' => NULL],
+    ],
+  ];
+}
+
+
+
+
+///** @file modules/custom/smile_entity/smile_entity.module
+// *
+// * Provides a theme definition for custom content entity
+// * {@inheritdoc}
+// */
+//
+//function smile_entity_theme($existing, $type, $theme, $path) {
+//  $theme = [
+//    'smile_entity' => [                        // the entity id
+//      'path' => $path . '/templates',          // template directory in module or theme
+//      'template'  => 'smile_entity',           // defines base template as /smile-entity.html.twig
+//      'render element' => 'elements',          // Theme API call to define the container of the entity in the render array
+//      // The entity will be prefixed with a hash sign as ['elements']['#smile_entity']
+//    ],
+//  ];
+//  return $theme;
+//}
+//
+///** @file modules/custom/smile_entity/templates/smile-entity.html.twig
+// * Prepares variables for templates.
+// * implements hook_preprocess_HOOK()
+// */
+//function template_preprocess_smile_entity(&$variables) {
+//  // Helpful $content variable for templates.
+//  $variables['content'] = [];
+//  foreach (\Drupal\Core\Render\Element::children($variables['elements']) as $key) {
+//    $variables['content'][$key] = $variables['elements'][$key];
+//  }
+//  /** @var smile_entityInterface $entity */
+//  $entity = $variables['elements']['#smile_entity'];
+//  //provide the label
+//  $variables['label'] = $entity->label();
+//  //provide the alias
+//  $variables['url'] = $entity->toUrl()->toString();
+//}
+

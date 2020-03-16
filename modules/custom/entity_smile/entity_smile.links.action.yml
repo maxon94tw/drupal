@@ -1,0 +1,10 @@
+entity.entity_smile.add_form:
+  route_name: entity.entity_smile.add_page
+  title: 'Add entity smile'
+  appears_on:
+    - entity.entity_smile.collection
+entity.entity_smile_type.add_form:
+  route_name: entity.entity_smile_type.add_form
+  title: 'Add entity smile type'
+  appears_on:
+    - entity.entity_smile_type.collection
