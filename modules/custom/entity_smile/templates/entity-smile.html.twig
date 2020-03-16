@@ -1,1 +1,26 @@
-<!-- Add you custom twig html here -->
+{# ** @file modules/custom/entity_smile/templates/entity-smile.html.twig
+ *
+ * Default theme implementation to present entity_smile data.
+ *
+ * Available variables:
+ * - content: A list of content items. Use 'content' to print all content, or
+ *          content.field_name to access public fields
+ * - attributes: HTML attributes for the container element.
+ *
+ * @see template_preprocess_entity_smile()
+ *
+ * @ingroup themeable
+ */
+#}
+
+
+{#<div{{ attributes.addClass('entity_smile') }}>#}
+{#  {% if content %}#}
+{#    {{- content -}}#}
+{#  {% endif %}#}
+{#</div>#}
+
+
+<p>Test twig template!</p>
+
+<p>test_var: {{ test_var }}</p>

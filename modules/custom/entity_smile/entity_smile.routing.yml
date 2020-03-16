@@ -1,0 +1,24 @@
+entity.entity_smile.collection:
+  path: '/smile'
+  defaults:
+    _entity_list: 'entity_smile'
+    _title: 'List with the entities'
+  requirements:
+    _permission: 'access content'
+
+entity.entity_smile.canonical:
+  path: '/smile/{entity_smile}'
+  defaults:
+    _entity_view: 'entity_smile'
+    _title: 'Entity ID'
+  requirements:
+    _permission: 'access content'
+
+entity_smile.content:
+  path: '/smile/template'
+  defaults:
+    _title: 'Custom template'
+    _controller: '\Drupal\entity_smile\Controller\CustomTemplateController::content'
+  requirements:
+    _permission: 'access content'
+

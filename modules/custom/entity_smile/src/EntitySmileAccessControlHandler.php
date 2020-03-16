@@ -19,46 +19,48 @@ class EntitySmileAccessControlHandler extends EntityAccessControlHandler {
    */
   protected function checkAccess(EntityInterface $entity, $operation, AccountInterface $account) {
     /** @var \Drupal\entity_smile\Entity\EntitySmileInterface $entity */
+    if (in_array($entity->get('role')->getString(), $account->getRoles())) {
+      switch ($operation) {
 
-    switch ($operation) {
+        case 'view':
 
-      case 'view':
+          if (!$entity->isPublished()) {
+            $permission = $this->checkOwn($entity, 'view unpublished', $account);
+            if (!empty($permission)) {
+              return AccessResult::allowed();
+            }
 
-        if (!$entity->isPublished()) {
-          $permission = $this->checkOwn($entity, 'view unpublished', $account);
+            return AccessResult::allowedIfHasPermission($account, 'view unpublished entity smile entities');
+          }
+
+          $permission = $this->checkOwn($entity, $operation, $account);
           if (!empty($permission)) {
             return AccessResult::allowed();
           }
 
-          return AccessResult::allowedIfHasPermission($account, 'view unpublished entity smile entities');
-        }
+          return AccessResult::allowedIfHasPermission($account, 'view published entity smile entities');
 
-        $permission = $this->checkOwn($entity, $operation, $account);
-        if (!empty($permission)) {
-          return AccessResult::allowed();
-        }
+        case 'update':
 
-        return AccessResult::allowedIfHasPermission($account, 'view published entity smile entities');
+          $permission = $this->checkOwn($entity, $operation, $account);
+          if (!empty($permission)) {
+            return AccessResult::allowed();
+          }
+          return AccessResult::allowedIfHasPermission($account, 'edit entity smile entities');
 
-      case 'update':
+        case 'delete':
 
-        $permission = $this->checkOwn($entity, $operation, $account);
-        if (!empty($permission)) {
-          return AccessResult::allowed();
-        }
-        return AccessResult::allowedIfHasPermission($account, 'edit entity smile entities');
+          $permission = $this->checkOwn($entity, $operation, $account);
+          if (!empty($permission)) {
+            return AccessResult::allowed();
+          }
+          return AccessResult::allowedIfHasPermission($account, 'delete entity smile entities');
+      }
 
-      case 'delete':
-
-        $permission = $this->checkOwn($entity, $operation, $account);
-        if (!empty($permission)) {
-          return AccessResult::allowed();
-        }
-        return AccessResult::allowedIfHasPermission($account, 'delete entity smile entities');
+      // Unknown operation, no opinion.
+      return AccessResult::neutral();
     }
-
-    // Unknown operation, no opinion.
-    return AccessResult::neutral();
+    return AccessResult::forbidden();
   }
 
   /**
