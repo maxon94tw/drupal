@@ -32,5 +32,5 @@ function smile_entity_update_8101() {
          ->setDisplayConfigurable('view', TRUE);
 
   $definition_update_manager
-    ->installFieldStorageDefinition('user_role', 'smile_entity', 'smile_entity', $storage_definition);
+    ->installFieldStorageDefinition('user_role', 'entity_smile', 'entity_smile', $storage_definition);
 }

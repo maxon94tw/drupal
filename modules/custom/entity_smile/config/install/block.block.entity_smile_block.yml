@@ -1,0 +1,13 @@
+id: entity_smile_block
+theme: bartik
+weight: 10
+status: true
+langcode: en
+region: sidebar_first
+plugin: entity_smile_block
+settings:
+  label: 'Entity Smile Block'
+  module: entity_smile
+  label_display: '0'
+  cache: 9999
+visibility: {   }
