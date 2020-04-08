@@ -57,7 +57,7 @@ class EntitySmileBlock extends BlockBase implements BlockPluginInterface
 //    //With this when your node change your block will rebuild
 //    if ($node = \Drupal::routeMatch()->getParameter('node')) {
 //      //if there is node add its cachetag
-//      return Cache::mergeTags(parent::getCacheTags(), array('node:' . $node->id()));
+//      return Cache::mergeTags(parent::getCacheTags(), ['node:' . $node->id())];
 //    } else {
 //      //Return default tags instead.
 //      return parent::getCacheTags();

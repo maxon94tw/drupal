@@ -2,10 +2,10 @@
 
 /**
  * @file
- * Contains \Drupal\entity_smile\Plugin\Derivative\EntitySmileDerivativeBlock.
+ * Contains \Drupal\entity_smile\Plugin\Derivative\EntitySmileDerivative.
  */
 
-namespace Drupal\demo\Plugin\Derivative;
+namespace Drupal\entity_smile\Plugin\Derivative;
 
 use Drupal\Component\Plugin\Derivative\DeriverBase;
 use Drupal\Core\Entity\EntityStorageInterface;
@@ -15,7 +15,7 @@ use Symfony\Component\DependencyInjection\ContainerInterface;
 /**
  * Provides block plugin definitions for nodes.
  *
- * @see \Drupal\demo\Plugin\Derivative\EntitySmileDerivative
+ * @see \Drupal\entity_smile\Plugin\Derivative\EntitySmileDerivative
  */
 class EntitySmileDerivative extends DeriverBase implements ContainerDeriverInterface {
 
