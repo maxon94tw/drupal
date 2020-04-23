@@ -1,0 +1,9 @@
+{
+  "name": "drupal/search_api_solr_multilingual",
+  "description": "Provides the transition to search_api_solr 4.x.",
+  "type": "drupal-module",
+  "license": "GPL-2.0+",
+  "require": {
+    "drupal/search_api_solr": ">=3.0.0"
+  }
+}
