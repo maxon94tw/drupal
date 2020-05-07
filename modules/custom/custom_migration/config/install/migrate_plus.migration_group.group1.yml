@@ -1,0 +1,9 @@
+langcode: en
+status: true
+dependencies: {   }
+id: group1
+label: Group1
+description: Custom group data migrations.
+source_type: ''
+module: null
+shared_configuration: null

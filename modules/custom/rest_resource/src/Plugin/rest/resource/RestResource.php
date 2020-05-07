@@ -2,11 +2,14 @@
 
 namespace Drupal\rest_resource\Plugin\rest\resource;
 
+use Drupal\Core\Database\Database;
 use Drupal\rest\ModifiedResourceResponse;
 use Drupal\rest\Plugin\ResourceBase;
 use Drupal\rest\ResourceResponse;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 use Symfony\Component\HttpKernel\Exception\AccessDeniedHttpException;
+use Symfony\Component\HttpKernel\Exception\BadRequestHttpException;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 /**
  * Provides a resource to get view modes by entity and bundle.
@@ -49,15 +52,28 @@ class RestResource extends ResourceBase {
      * @throws \Symfony\Component\HttpKernel\Exception\HttpException
      *   Throws exception expected.
      */
-    public function get($payload) {
+    public function get($id = NULL) {
 
-        // You must to implement the logic of your REST Resource here.
-        // Use current user after pass authentication to validate access.
-        if (!$this->currentUser->hasPermission('access content')) {
-            throw new AccessDeniedHttpException();
+      if ($id) {
+        $record = Database::getConnection()->query("SELECT * FROM {pets_owners_storage} WHERE id = :id", [':id' => $id])
+          ->fetchAssoc();
+        if (!empty($record)) {
+          return new ResourceResponse($record);
         }
 
-        return new ResourceResponse($payload, 200);
+        throw new NotFoundHttpException(t('Log entry with ID @id was not found', ['@id' => $id]));
+      }
+
+      throw new BadRequestHttpException(t('No log entry ID was provided'));
+
+    }
+
+    public function post() {
+
+    }
+
+    public function delete() {
+
     }
 
 }

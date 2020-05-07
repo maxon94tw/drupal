@@ -1,0 +1,12 @@
+name: custom_migration
+type: module
+description: Custom migration module
+core: 8.x
+package: Custom
+
+dependencies:
+  - drupal:migrate
+  - drupal:migrate_plus
+  - drupal:migrate_tools
+  - drupal:node
+

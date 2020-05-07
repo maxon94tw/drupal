@@ -1,0 +1,85 @@
+id: custom_content_migration
+label: Custom content migration
+migration_group: custom
+source:
+  plugin: url
+  data_fetcher_plugin: http
+  data_parser_plugin: json
+  urls:
+    - 'http://test.moteur.education.gouv.fr/egf_cid/_search?size=10&from=0&q=archive:false'
+  authentication:
+    plugin: basic
+    username: smile
+    password: 26RL6AHdug6u
+  item_selector: hits/hits
+  fields:
+    - name: id
+      label: 'Unique pos identifier'
+      selector: _id
+    - name: title
+        label: 'Node title'
+        selector: _source/titre
+    - name: subtitle
+        label: 'Subtitle'
+        selector: _source/sous_titre
+    - name: chapo
+        label: 'Chapo'
+        selector: _source/chapo
+    - name: content
+        label: 'Content'
+        selector: _source/texte
+    - name: date_publication
+        label: 'Publication Date'
+        selector: _source/date_publication
+    - name: meta_description
+        label: 'Meta Description'
+        selector: _source/meta_desc
+    - name: meta_keywords
+        label: 'Meta Keywords'
+        selector: _source/meta_keywords
+
+  ids:
+    id:
+      type: string
+
+  constans:
+    status: 1
+    body_format: 'full.html'
+    color: '#A52A2A'
+
+process:
+
+  type:
+    plugin: get_content_type
+    source:
+      - id
+      - type
+      - publication_date
+
+  uid:
+    plugin: default_value
+    default_value: 1
+
+  title:
+    plugin: title_process
+    source: title
+
+  field_import_title: title
+
+  field_date_publication:
+    plugin: format_date
+    from_format: 'Y-m-d\TH:i:s'
+    to_format: 'Y-m-d\TH:i:s'
+    timezone: 'America/Managua'
+    settings:
+      validate_format: false
+    source: date_publication
+
+destination:
+  plugin: entity:node
+
+migration_dependencies: {}
+dependencies:
+  enforced:
+    module:
+      - custom_migration
